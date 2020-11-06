@@ -18,12 +18,32 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userScehma = void 0;
 var mongoose_1 = __importStar(require("mongoose"));
+var bcrypt_1 = __importDefault(require("bcrypt"));
 var userScehma = new mongoose_1.Schema({
     email: String,
     password: String,
 });
 exports.userScehma = userScehma;
+userScehma.pre("save", function (next) {
+    //https://stackoverflow.com/questions/46182826/mongoose-hooks-not-working-with-typescript
+    //Arrow functions cannot have 'this' as param
+    var user = this;
+    var saltRounds = 10;
+    bcrypt_1.default.hash(user.password, saltRounds, function (err, hash) {
+        // Now we can store the password hash in db.
+        if (err) {
+            return next(err);
+        }
+        console.log(hash);
+        //Override current text password with hash
+        user.password = hash;
+        next();
+    });
+});
 exports.default = mongoose_1.default.model("users", userScehma);
