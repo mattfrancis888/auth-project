@@ -7,6 +7,7 @@ exports.signUp = void 0;
 var users_1 = __importDefault(require("../models/users"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var tokenForUser = function (user) {
+    //Generate a token by using user id and 'secret key'
     if (process.env.privateKey) {
         //iat- issued at  property is implemented by default
         return jsonwebtoken_1.default.sign({ subject: user.id }, process.env.privateKey);
@@ -41,6 +42,7 @@ exports.signUp = function (req, res, next) {
         user.save(function (err) {
             if (err)
                 return next(err);
+            //Generate a token when user signs in
             res.send({ token: tokenForUser(user) });
         });
         //Respond to request indicating user was created

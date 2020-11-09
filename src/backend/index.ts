@@ -22,11 +22,11 @@ if (process.env.mongoURI) {
 const app = express();
 // middleware for parsing bodies from URL
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(cors());
+
 route(app);
 const port = 5000;
-app.use(errorHandler);
+//app.use(errorHandler);
 app.listen(port, () => {
     console.log(`App running on port ${port}.`);
 });

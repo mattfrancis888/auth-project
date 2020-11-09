@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.errorHandler = void 0;
-exports.errorHandler = function (err, req, res, next) {
+//https://stackoverflow.com/questions/47002688/rest-api-only-in-express-getting-error-no-default-engine-was-specified-and-no
+exports.errorHandler = function (err, req, res) {
     res.status(500);
-    res.render("error", { error: err });
+    res.send({ error: err });
 };

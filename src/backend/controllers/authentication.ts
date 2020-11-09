@@ -2,6 +2,7 @@ import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
 import User, { IUser } from "../models/users";
 import jwt from "jsonwebtoken";
 const tokenForUser = (user: IUser) => {
+    //Generate a token by using user id and 'secret key'
     if (process.env.privateKey) {
         //iat- issued at  property is implemented by default
         return jwt.sign({ subject: user.id }, process.env.privateKey);
@@ -39,6 +40,7 @@ export const signUp = (req: Request, res: Response, next: NextFunction) => {
 
             user.save((err) => {
                 if (err) return next(err);
+                //Generate a token when user signs in
                 res.send({ token: tokenForUser(user) });
             });
 

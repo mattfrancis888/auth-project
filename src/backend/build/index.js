@@ -9,7 +9,6 @@ var cors_1 = __importDefault(require("cors"));
 var mongoose_1 = __importDefault(require("mongoose"));
 var routes_1 = __importDefault(require("./routes"));
 var body_parser_1 = __importDefault(require("body-parser"));
-var errorHandler_1 = require("./errorHandler");
 if (process.env.NODE_ENV !== "production") {
     //We don't need dotenv when in production
     dotenv_1.default.config();
@@ -25,7 +24,7 @@ app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use(cors_1.default());
 routes_1.default(app);
 var port = 5000;
-app.use(errorHandler_1.errorHandler);
+//app.use(errorHandler);
 app.listen(port, function () {
     console.log("App running on port " + port + ".");
 });
