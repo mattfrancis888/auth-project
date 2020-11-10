@@ -1,12 +1,16 @@
-header {
+nav {
+    position: fixed;
+    width: 100%;
+    background-color: black;
+}
+.navWrap {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
 }
 
-.headerLogIn {
+.navLogIn {
     position: absolute;
     right: 1rem;
     font-size: 1rem;

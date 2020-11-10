@@ -358,15 +358,20 @@ body {
   font: 1.1rem helvetica, arial, sans-serif;
 }
 
-header {
+nav {
+  position: fixed;
+  width: 100%;
+  background-color: black;
+}
+
+.navWrap {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
 }
 
-.headerLogIn {
+.navLogIn {
   position: absolute;
   right: 1rem;
   font-size: 1rem;
@@ -375,16 +380,22 @@ header {
   letter-spacing: 0.2rem;
 }
 @media screen and (min-width: 520px) {
-  .headerLogIn {
+  .navLogIn {
     font-size: 1.2rem;
     right: 3rem;
   }
 }
 @media screen and (min-width: 768px) {
-  .headerLogIn {
+  .navLogIn {
     font-size: 1.4rem;
     right: 7rem;
   }
+}
+
+.bodyBackgroundImg {
+  width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=main.css.map */
