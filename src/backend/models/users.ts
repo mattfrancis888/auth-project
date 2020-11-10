@@ -1,10 +1,10 @@
 import mongoose, { Schema } from "mongoose";
-import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 
 export interface IUser extends mongoose.Document {
     email: { type: string; unique: true; lowercase: true };
     password: string;
+    comparePassword: Function;
 }
 
 const userScehma = new Schema({
@@ -28,5 +28,16 @@ userScehma.pre("save", function (this: IUser, next) {
         next();
     });
 });
+
+userScehma.methods.comparePassword = function (
+    candidatePassword: string,
+    callback: Function
+) {
+    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+        if (err) return callback(err);
+        callback(null, isMatch);
+    });
+};
+
 export { userScehma };
 export default mongoose.model<IUser>("users", userScehma);

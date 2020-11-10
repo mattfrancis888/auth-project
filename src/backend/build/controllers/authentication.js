@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.signUp = void 0;
+exports.signUp = exports.signIn = void 0;
 var users_1 = __importDefault(require("../models/users"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var tokenForUser = function (user) {
@@ -12,6 +12,10 @@ var tokenForUser = function (user) {
         //iat- issued at  property is implemented by default
         return jsonwebtoken_1.default.sign({ subject: user.id }, process.env.privateKey);
     }
+};
+exports.signIn = function (req, res) {
+    //req.user exists because of the done(null, user) used in the Strategies at passport.ts
+    res.send({ token: tokenForUser(req.user) });
 };
 exports.signUp = function (req, res, next) {
     //If user with given email exists
@@ -42,10 +46,9 @@ exports.signUp = function (req, res, next) {
         user.save(function (err) {
             if (err)
                 return next(err);
-            //Generate a token when user signs in
+            //Generate a token when user signs in, this token will be used so that they can access protected routes
             res.send({ token: tokenForUser(user) });
+            //Respond to request indicating user was created
         });
-        //Respond to request indicating user was created
     });
-    //
 };

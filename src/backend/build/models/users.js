@@ -46,4 +46,11 @@ userScehma.pre("save", function (next) {
         next();
     });
 });
+userScehma.methods.comparePassword = function (candidatePassword, callback) {
+    bcrypt_1.default.compare(candidatePassword, this.password, function (err, isMatch) {
+        if (err)
+            return callback(err);
+        callback(null, isMatch);
+    });
+};
 exports.default = mongoose_1.default.model("users", userScehma);

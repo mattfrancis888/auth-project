@@ -8,6 +8,11 @@ const tokenForUser = (user: IUser) => {
         return jwt.sign({ subject: user.id }, process.env.privateKey);
     }
 };
+
+export const signIn = (req: any, res: Response) => {
+    //req.user exists because of the done(null, user) used in the Strategies at passport.ts
+    res.send({ token: tokenForUser(req.user) });
+};
 export const signUp = (req: Request, res: Response, next: NextFunction) => {
     //If user with given email exists
     const email = req.body.email;
@@ -40,12 +45,10 @@ export const signUp = (req: Request, res: Response, next: NextFunction) => {
 
             user.save((err) => {
                 if (err) return next(err);
-                //Generate a token when user signs in
+                //Generate a token when user signs in, this token will be used so that they can access protected routes
                 res.send({ token: tokenForUser(user) });
+                //Respond to request indicating user was created
             });
-
-            //Respond to request indicating user was created
         }
     );
-    //
 };
