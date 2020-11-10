@@ -358,8 +358,33 @@ body {
   font: 1.1rem helvetica, arial, sans-serif;
 }
 
-h1 {
-  color: red;
+header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.headerLogIn {
+  position: absolute;
+  right: 1rem;
+  font-size: 1rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+@media screen and (min-width: 520px) {
+  .headerLogIn {
+    font-size: 1.2rem;
+    right: 3rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .headerLogIn {
+    font-size: 1.4rem;
+    right: 7rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

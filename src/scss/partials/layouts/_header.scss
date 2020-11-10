@@ -1,0 +1,24 @@
+header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.headerLogIn {
+    position: absolute;
+    right: 1rem;
+    font-size: 1rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    @media screen and (min-width: $sm_breakpoint) {
+        font-size: 1.2rem;
+        right: 3rem;
+    }
+    @media screen and (min-width: $md_breakpoint) {
+        font-size: 1.4rem;
+        right: 7rem;
+    }
+}
