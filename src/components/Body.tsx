@@ -3,13 +3,30 @@ import useWindowDimensions from "../windowDimensions";
 import { MED_SCREEN_SIZE } from "../constants";
 import background from "../img/background.jpg";
 import mobileBackground from "../img/mobileBackground.jpg";
+import AuthForm from "./AuthForm";
+
+export interface AuthFormProps {
+    onSubmit(formValues: any): any;
+}
+
 const Body: React.FC<{}> = () => {
+    const onSubmit = async (formValues: any) => {
+        //Won't be triggered if failed to meet requirements of the form
+        //Callback for ReviewForm
+        //event.preventDefault()
+        //Redux automaticlaly calls it with handleSubmit
+        //form values are the values from the fields that redux-form automatiacally passes [Which is done in Streamform]
+        //after clicking the submit button
+        console.log(formValues);
+    };
+
     const { width } = useWindowDimensions();
 
     return (
         <div className="bodyContainer">
             <div className="contentContainer">
                 <div className="listenContainer">
+                    <AuthForm onSubmit={onSubmit} />
                     <h1 className="listenTitle">
                         Log In To Listen to Peter Quill's Walkman
                     </h1>
