@@ -4,6 +4,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 html {
   line-height: 1.15;
   /* 1 */
@@ -341,6 +342,7 @@ template,
  */
 body {
   margin: 0;
+  background-color: black;
 }
 
 a {
@@ -360,8 +362,11 @@ body {
 
 nav {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   background-color: black;
+  z-index: 2;
 }
 
 .navWrap {
@@ -392,9 +397,143 @@ nav {
   }
 }
 
-.bodyBackgroundImg {
-  width: 100vw;
-  min-height: 100vh;
+.bodyContainer {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 75rem;
+}
+@media screen and (min-width: 768px) {
+  .bodyContainer {
+    height: 85rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .bodyContainer {
+    height: 90rem;
+  }
+}
+
+.contentContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bodyBackgroundImgWrap {
+  width: 100%;
+  height: 100%;
+  z-index: -999;
+}
+.bodyBackgroundImgWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.listenContainer {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 60vw;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  font-family: "Roboto Condensed";
+  margin-top: 15rem;
+}
+@media screen and (min-width: 768px) {
+  .listenContainer {
+    width: 70vw;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .listenContainer {
+    width: 50vw;
+    padding: 3rem;
+  }
+}
+
+.listenTitle {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: red;
+  margin: 0 0 1rem 0;
+}
+@media screen and (min-width: 520px) {
+  .listenTitle {
+    font-size: 2.2rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .listenTitle {
+    margin: 0 0 3rem 0;
+    font-size: 2.7rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .listenTitle {
+    font-size: 3rem;
+  }
+}
+
+.listenAboutWrap {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.2rem;
+}
+.listenAboutWrap p {
+  width: 100%;
+  padding: 1rem;
+  margin: 0;
+}
+@media screen and (min-width: 520px) {
+  .listenAboutWrap p {
+    padding: 1.5rem;
+    font-size: 1.7rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .listenAboutWrap p {
+    padding: 0;
+    width: 50%;
+    padding: 0 2rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .listenAboutWrap p {
+    font-size: 2rem;
+    line-height: 3rem;
+    padding: 0 2rem;
+  }
+}
+
+.walkmanContainer {
+  max-height: 20rem;
+}
+@media screen and (min-width: 520px) {
+  .walkmanContainer {
+    max-height: 25rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .walkmanContainer {
+    width: 50%;
+    max-height: 30rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .walkmanContainer {
+    max-height: 35rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .walkmanContainer {
+    max-height: 45rem;
+  }
+}
+.walkmanContainer img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
