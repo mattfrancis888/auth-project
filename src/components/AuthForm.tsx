@@ -33,12 +33,7 @@ const renderInput = ({ input, label, meta, placeHolder }: any) => {
     return (
         <div>
             <label>{label}</label>
-            <input
-                className="createInputsAndTextArea"
-                {...input}
-                autoComplete="off"
-                placeholder={placeHolder}
-            />
+            <input className="createAuthInputs" {...input} autoComplete="off" />
             {renderError(meta)}
         </div>
     );
@@ -60,26 +55,19 @@ const AuthForm: React.FC<
     return (
         <React.Fragment>
             <form className="authForm" onSubmit={props.handleSubmit(onSubmit)}>
-                <div className="createFormSection">
+                <div className="authFieldSection">
                     <h1>Email</h1>
-                    <Field
-                        name="email"
-                        type="text"
-                        component={renderInput}
-                        placeHolder="email"
-                    />
+                    <Field name="email" type="text" component={renderInput} />
                 </div>
-                <div className="createFormSection">
+                <div className="authFieldSection">
                     <h1>Password</h1>
-                    <Field
-                        name="password"
-                        component={renderInput}
-                        placeHolder="password"
-                    />
+                    <Field name="password" component={renderInput} />
                 </div>
 
-                <button className="logInFormButton">Log In</button>
-                <h3>Don't have an account? Register one here!</h3>
+                <button className="authButton">Log In</button>
+                <h3 className="registerAccountText">
+                    Don't have an account? Register one here!
+                </h3>
             </form>
         </React.Fragment>
     );

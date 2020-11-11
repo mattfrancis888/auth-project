@@ -4,6 +4,7 @@ import { MED_SCREEN_SIZE } from "../constants";
 import background from "../img/background.jpg";
 import mobileBackground from "../img/mobileBackground.jpg";
 import AuthForm from "./AuthForm";
+import { connect } from "react-redux";
 
 export interface AuthFormProps {
     onSubmit(formValues: any): any;
@@ -27,7 +28,7 @@ const Body: React.FC<{}> = () => {
             <div className="contentContainer">
                 <div className="listenContainer">
                     <AuthForm onSubmit={onSubmit} />
-                    <h1 className="listenTitle">
+                    {/* <h1 className="listenTitle">
                         Log In To Listen to Peter Quill's Walkman
                     </h1>
                     <div className="listenAboutWrap">
@@ -44,7 +45,7 @@ const Body: React.FC<{}> = () => {
                                 alt="walkman"
                             ></img>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
@@ -61,4 +62,4 @@ const Body: React.FC<{}> = () => {
     );
 };
 
-export default Body;
+export default connect(null, {})(Body);
