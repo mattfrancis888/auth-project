@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { signUp } from "../actions";
 export interface AuthFormProps {
     onSubmit(formValues: any): any;
+    authStatus?: string;
 }
 
 export interface BodyProps {

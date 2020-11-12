@@ -31,7 +31,7 @@
         text-transform: uppercase;
         font-weight: 600;
         letter-spacing: 0.1rem;
-        margin-bottom: 0.7rem;
+        margin: 0;
         font-size: 1rem;
         @media screen and (min-width: $sm_breakpoint) {
             font-size: 1.45rem;
@@ -74,4 +74,24 @@
     margin-top: 1rem;
     color: red;
     font-size: 1.4rem;
+}
+
+.authFormFieldTitleWrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.7rem;
+    padding: 0.5rem;
+}
+
+.authFormFieldTitleEmailInUse {
+    margin: 0;
+    font-size: 0.8rem;
+    color: red;
+    margin-left: 0.3rem;
+    @media screen and (min-width: $sm_breakpoint) {
+        font-size: 1.2rem;
+    }
+    @media screen and (min-width: $lg_breakpoint) {
+        font-size: 1.3rem;
+    }
 }

@@ -26,7 +26,7 @@ export const signUp = (formValues: any) => async (dispatch: Dispatch) => {
         console.log(err);
         dispatch<AuthErrorAction>({
             type: ActionTypes.AUTH_ERROR,
-            payload: "Email is in use",
+            payload: "- Email is in use",
         });
     }
 };

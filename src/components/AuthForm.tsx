@@ -56,15 +56,26 @@ const AuthForm: React.FC<
         dispatch(reset("authForm"));
         props.onSubmit(formValues);
     };
+    console.log("AUTH STATUS", props.authStatus);
     return (
         <React.Fragment>
             <form className="authForm" onSubmit={props.handleSubmit(onSubmit)}>
                 <div className="authFieldSection">
-                    <h1>Email</h1>
+                    <div className="authFormFieldTitleWrap">
+                        <h1>Email</h1>
+                        <h3 className="authFormFieldTitleEmailInUse">
+                            {props.authStatus}
+                        </h3>
+                    </div>
                     <Field name="email" type="text" component={renderInput} />
                 </div>
                 <div className="authFieldSection">
-                    <h1>Password</h1>
+                    <div className="authFormFieldTitleWrap">
+                        <h1>Password</h1>
+                        <h3 className="authFormFieldTitleEmailInUse">
+                            {props.authStatus}
+                        </h3>
+                    </div>
                     <Field name="password" component={renderInput} />
                 </div>
 
@@ -73,7 +84,6 @@ const AuthForm: React.FC<
                     Don't have an account? Register one here!
                 </h3>
             </form>
-            {/* <h1>{props.authStatus}</h1> */}
         </React.Fragment>
     );
 };
@@ -96,23 +106,15 @@ const validate = (formValues: AuthFormValues): FormErrors<AuthFormValues> => {
     //Erors is going to be passed to renderInput's meta
 };
 
-// const mapStateToProps = (state: StoreState) => {
-//     return {
-//         authStatus: state.authStatus.errorMessage,
-//     };
-// };
+const mapStateToProps = (state: StoreState) => {
+    return {
+        authStatus: state.authStatus.errorMessage,
+    };
+};
 
-// export default connect(mapStateToProps, { signUp })(Body);
-
-export default reduxForm<{}, AuthFormProps>({
-    form: "authForm",
-    validate,
-})(AuthForm);
-
-// export default compose<React.FC & AuthFormProps>(
-//     connect(mapStateToProps, {}),
-//     reduxForm<{}, AuthFormProps>({
-//         form: "authForm",
-//         validate,
-//     })
-// )(AuthForm);
+export default connect(mapStateToProps)(
+    reduxForm<{}, AuthFormProps>({
+        form: "authForm",
+        validate,
+    })(AuthForm)
+);
