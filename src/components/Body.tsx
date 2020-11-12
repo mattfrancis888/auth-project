@@ -3,14 +3,18 @@ import useWindowDimensions from "../windowDimensions";
 import { MED_SCREEN_SIZE } from "../constants";
 import background from "../img/background.jpg";
 import mobileBackground from "../img/mobileBackground.jpg";
-import AuthForm from "./AuthForm";
+import AuthForm, { AuthFormValues } from "./AuthForm";
 import { connect } from "react-redux";
-
+import { signUp } from "../actions";
 export interface AuthFormProps {
     onSubmit(formValues: any): any;
 }
 
-const Body: React.FC<{}> = () => {
+export interface BodyProps {
+    signUp(formValues: any): void;
+}
+
+const Body: React.FC<BodyProps> = (props) => {
     const onSubmit = async (formValues: any) => {
         //Won't be triggered if failed to meet requirements of the form
         //Callback for ReviewForm
@@ -19,6 +23,7 @@ const Body: React.FC<{}> = () => {
         //form values are the values from the fields that redux-form automatiacally passes [Which is done in Streamform]
         //after clicking the submit button
         console.log(formValues);
+        props.signUp(formValues);
     };
 
     const { width } = useWindowDimensions();
@@ -62,4 +67,4 @@ const Body: React.FC<{}> = () => {
     );
 };
 
-export default connect(null, {})(Body);
+export default connect(null, { signUp })(Body);

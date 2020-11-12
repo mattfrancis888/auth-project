@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ComponentType } from "react";
 import {
     Field,
     reduxForm,
@@ -6,6 +6,10 @@ import {
     FormErrors,
     InjectedFormProps,
 } from "redux-form";
+import { compose } from "redux";
+//compose is used to make it easier to "organize" mapStateToProps and redux form
+import { StoreState } from "../reducers";
+import { connect } from "react-redux";
 import { AuthFormProps } from "./Body";
 //Re-usable component
 export interface AuthFormValues {
@@ -69,6 +73,7 @@ const AuthForm: React.FC<
                     Don't have an account? Register one here!
                 </h3>
             </form>
+            {/* <h1>{props.authStatus}</h1> */}
         </React.Fragment>
     );
 };
@@ -91,9 +96,23 @@ const validate = (formValues: AuthFormValues): FormErrors<AuthFormValues> => {
     //Erors is going to be passed to renderInput's meta
 };
 
+// const mapStateToProps = (state: StoreState) => {
+//     return {
+//         authStatus: state.authStatus.errorMessage,
+//     };
+// };
+
+// export default connect(mapStateToProps, { signUp })(Body);
+
 export default reduxForm<{}, AuthFormProps>({
     form: "authForm",
     validate,
 })(AuthForm);
 
-// export default connect(null, { createStream })(formWrapped);
+// export default compose<React.FC & AuthFormProps>(
+//     connect(mapStateToProps, {}),
+//     reduxForm<{}, AuthFormProps>({
+//         form: "authForm",
+//         validate,
+//     })
+// )(AuthForm);
