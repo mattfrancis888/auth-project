@@ -631,16 +631,27 @@ nav {
 }
 
 .errorText {
-  margin-top: 1rem;
+  margin: 0.2rem 0;
   color: red;
-  font-size: 1.4rem;
+  font-size: 1rem;
+}
+@media screen and (min-width: 520px) {
+  .errorText {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .errorText {
+    font-size: 1.4rem;
+  }
 }
 
 .authFormFieldTitleWrap {
   display: flex;
   align-items: center;
   margin-bottom: 0.7rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
 }
 
 .authFormFieldTitleEmailInUse {
@@ -658,6 +669,11 @@ nav {
   .authFormFieldTitleEmailInUse {
     font-size: 1.3rem;
   }
+}
+
+.walkmanTitle {
+  margin-top: 10rem;
+  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,10 +1,16 @@
 import React from "react";
-
+import { useHistory } from "react-router-dom";
 const Header: React.FC<{}> = () => {
+    const history = useHistory();
     return (
         <nav>
             <div className="navWrap">
-                <svg width="130" height="52" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                    width="130"
+                    height="52"
+                    xmlns="http://www.w3.org/2000/svg"
+                    onClick={() => history.push("/")}
+                >
                     <rect fill="#EC1D24" width="100%" height="100%"></rect>
                     <path
                         fill="#FEFEFE"

@@ -22,6 +22,7 @@ if (process.env.mongoURI) {
 const app = express();
 // middleware for parsing bodies from URL
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cors());
 
 route(app);

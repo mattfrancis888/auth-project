@@ -6,6 +6,7 @@ import mobileBackground from "../img/mobileBackground.jpg";
 import AuthForm, { AuthFormValues } from "./AuthForm";
 import { connect } from "react-redux";
 import { signUp } from "../actions";
+
 export interface AuthFormProps {
     onSubmit(formValues: any): any;
     authStatus?: string;
@@ -23,7 +24,7 @@ const Body: React.FC<BodyProps> = (props) => {
         //Redux automaticlaly calls it with handleSubmit
         //form values are the values from the fields that redux-form automatiacally passes [Which is done in Streamform]
         //after clicking the submit button
-        console.log(formValues);
+
         props.signUp(formValues);
     };
 

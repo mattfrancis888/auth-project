@@ -6,7 +6,6 @@ import {
     FormErrors,
     InjectedFormProps,
 } from "redux-form";
-import { compose } from "redux";
 //compose is used to make it easier to "organize" mapStateToProps and redux form
 import { StoreState } from "../reducers";
 import { connect } from "react-redux";
@@ -56,7 +55,7 @@ const AuthForm: React.FC<
         dispatch(reset("authForm"));
         props.onSubmit(formValues);
     };
-    console.log("AUTH STATUS", props.authStatus);
+
     return (
         <React.Fragment>
             <form className="authForm" onSubmit={props.handleSubmit(onSubmit)}>
@@ -79,7 +78,7 @@ const AuthForm: React.FC<
                     <Field name="password" component={renderInput} />
                 </div>
 
-                <button className="authButton">Log In</button>
+                <button className="authButton">Register</button>
                 <h3 className="registerAccountText">
                     Don't have an account? Register one here!
                 </h3>

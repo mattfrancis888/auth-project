@@ -71,16 +71,23 @@
 }
 
 .errorText {
-    margin-top: 1rem;
+    margin: 0.2rem 0;
     color: red;
-    font-size: 1.4rem;
+    font-size: 1rem;
+    @media screen and (min-width: $sm_breakpoint) {
+        font-size: 1.2rem;
+        margin: 1rem 0;
+    }
+    @media screen and (min-width: $md_breakpoint) {
+        font-size: 1.4rem;
+    }
 }
 
 .authFormFieldTitleWrap {
     display: flex;
     align-items: center;
     margin-bottom: 0.7rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
 }
 
 .authFormFieldTitleEmailInUse {
