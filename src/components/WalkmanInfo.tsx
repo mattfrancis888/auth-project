@@ -1,5 +1,5 @@
 import React from "react";
-
+import requireAuth from "./requireAuth";
 const WalkmanInfo: React.FC<{}> = () => {
     return (
         <div>
@@ -10,4 +10,4 @@ const WalkmanInfo: React.FC<{}> = () => {
     );
 };
 
-export default WalkmanInfo;
+export default requireAuth(WalkmanInfo);
