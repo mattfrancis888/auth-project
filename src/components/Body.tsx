@@ -9,7 +9,7 @@ import { signUp } from "../actions";
 
 export interface AuthFormProps {
     onSubmit(formValues: any): any;
-    authStatus?: string;
+    authStatus?: string | null;
 }
 
 export interface BodyProps {

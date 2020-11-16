@@ -376,7 +376,8 @@ nav {
   align-items: center;
 }
 
-.navLogIn {
+.navSignOut {
+  cursor: pointer;
   position: absolute;
   right: 1rem;
   font-size: 1rem;
@@ -385,16 +386,20 @@ nav {
   letter-spacing: 0.2rem;
 }
 @media screen and (min-width: 520px) {
-  .navLogIn {
+  .navSignOut {
     font-size: 1.2rem;
     right: 3rem;
   }
 }
 @media screen and (min-width: 768px) {
-  .navLogIn {
+  .navSignOut {
     font-size: 1.4rem;
     right: 7rem;
   }
+}
+
+.navSignOutHide {
+  display: none;
 }
 
 .bodyContainer {

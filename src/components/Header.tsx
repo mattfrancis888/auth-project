@@ -1,6 +1,14 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-const Header: React.FC<{}> = () => {
+import { connect } from "react-redux";
+import { StoreState } from "../reducers";
+import { signOut } from "../actions";
+
+interface IHeader {
+    authStatus?: string | null;
+    signOut(): void;
+}
+const Header: React.FC<IHeader> = (props) => {
     const history = useHistory();
     return (
         <nav>
@@ -22,10 +30,26 @@ const Header: React.FC<{}> = () => {
                         d="M31.5 48V4H21.291l-3.64 22.735L14.102 4H4v44h8V26.792L15.577 48h4.229l3.568-21.208V48z"
                     ></path>
                 </svg>
-                <h1 className="navLogIn">Log In</h1>
+
+                <h1
+                    className={
+                        props.authStatus ? "navSignOut" : "navSignOutHide"
+                    }
+                    onClick={() => {
+                        props.signOut();
+                    }}
+                >
+                    Sign Out
+                </h1>
             </div>
         </nav>
     );
 };
 
-export default Header;
+const mapStateToProps = (state: StoreState) => {
+    return {
+        authStatus: state.authStatus.authenticated,
+    };
+};
+
+export default connect(mapStateToProps, { signOut })(Header);

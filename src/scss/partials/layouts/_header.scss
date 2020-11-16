@@ -13,7 +13,8 @@ nav {
     align-items: center;
 }
 
-.navLogIn {
+.navSignOut {
+    cursor: pointer;
     position: absolute;
     right: 1rem;
     font-size: 1rem;
@@ -28,4 +29,8 @@ nav {
         font-size: 1.4rem;
         right: 7rem;
     }
+}
+
+.navSignOutHide {
+    display: none;
 }
