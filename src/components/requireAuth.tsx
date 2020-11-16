@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { StoreState } from "../reducers";
 import { History } from "history";
 export interface IHoc {
-    authStatus?: string;
+    authStatus?: string | null;
     history: History;
 }
 const hoc = (ChildComponent: any) => {

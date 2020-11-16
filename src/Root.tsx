@@ -30,7 +30,8 @@ interface IProps {
 const provider = ({ initialState = {}, children }: IProps) => {
     const store = createStore(
         reducers,
-        initialState,
+        { authStatus: { authenticated: localStorage.getItem("token") } },
+        //if our inital state (authStauts) has a token from local storage, keep them logged in
         composeWithDevTools(applyMiddleware(reduxThunk))
     );
 

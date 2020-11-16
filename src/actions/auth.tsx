@@ -22,6 +22,8 @@ export const signUp = (formValues: any) => async (dispatch: Dispatch) => {
             type: ActionTypes.AUTH_USER,
             payload: response.data,
         });
+        //Save token to local storage so that we could persist login state, keep user log in
+        localStorage.setItem("token", response.data.token);
         history.push("/walkman");
     } catch (err) {
         dispatch<AuthErrorAction>({

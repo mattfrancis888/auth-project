@@ -1,8 +1,9 @@
 import { ActionTypes, Actions } from "../actions";
 
 export interface AuthStateResponse {
-    authenticated: string;
-    errorMessage: string;
+    authenticated?: string | null;
+    //it can be null if local storage is empty and dosent contain the token (refer to Root.tsx);
+    errorMessage?: string;
 }
 
 export const AUTH_STATE: AuthStateResponse = {
