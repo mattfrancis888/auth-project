@@ -628,6 +628,10 @@ nav {
 
 .registerAccountText {
   color: red;
+  cursor: pointer;
+}
+.registerAccountText:hover {
+  text-decoration: underline;
 }
 @media screen and (min-width: 768px) {
   .registerAccountText {

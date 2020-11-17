@@ -3,17 +3,24 @@ import useWindowDimensions from "../windowDimensions";
 import { MED_SCREEN_SIZE } from "../constants";
 import background from "../img/background.jpg";
 import mobileBackground from "../img/mobileBackground.jpg";
-import AuthForm, { AuthFormValues } from "./AuthForm";
+import SignInForm from "./SignInForm";
 import { connect } from "react-redux";
-import { signUp } from "../actions";
+import { signUp, signIn } from "../actions";
+import RegisterForm from "./RegisterForm";
 
-export interface AuthFormProps {
+export interface SignInFormProps {
+    onSubmit(formValues: any): any;
+    authStatus?: string | null;
+}
+export interface RegisterFormProps {
+    //We might have different props in the future, so we are having 2 different interfaces for Sign In And Register
     onSubmit(formValues: any): any;
     authStatus?: string | null;
 }
 
 export interface BodyProps {
-    signUp(formValues: any): void;
+    //signUp(formValues: any): void;
+    signIn(formValues: any): void;
 }
 
 const Body: React.FC<BodyProps> = (props) => {
@@ -25,7 +32,8 @@ const Body: React.FC<BodyProps> = (props) => {
         //form values are the values from the fields that redux-form automatiacally passes [Which is done in Streamform]
         //after clicking the submit button
 
-        props.signUp(formValues);
+        // props.signUp(formValues);
+        props.signIn(formValues);
     };
 
     const { width } = useWindowDimensions();
@@ -34,7 +42,7 @@ const Body: React.FC<BodyProps> = (props) => {
         <div className="bodyContainer">
             <div className="contentContainer">
                 <div className="listenContainer">
-                    <AuthForm onSubmit={onSubmit} />
+                    <SignInForm onSubmit={onSubmit} />
                     {/* <h1 className="listenTitle">
                         Log In To Listen to Peter Quill's Walkman
                     </h1>
@@ -69,4 +77,4 @@ const Body: React.FC<BodyProps> = (props) => {
     );
 };
 
-export default connect(null, { signUp })(Body);
+export default connect(null, { signUp, signIn })(Body);

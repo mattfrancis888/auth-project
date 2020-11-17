@@ -9,9 +9,9 @@ import {
 //compose is used to make it easier to "organize" mapStateToProps and redux form
 import { StoreState } from "../reducers";
 import { connect } from "react-redux";
-import { AuthFormProps } from "./Body";
+import { SignInFormProps } from "./Body";
 //Re-usable component
-export interface AuthFormValues {
+export interface SignInFormValues {
     email: string;
     password: string;
 }
@@ -44,15 +44,14 @@ const renderInput = ({ input, label, meta, placeHolder }: any) => {
     //props to <input>
 };
 
-const AuthForm: React.FC<
-    AuthFormProps & InjectedFormProps<{}, AuthFormProps>
+const SignInForm: React.FC<
+    SignInFormProps & InjectedFormProps<{}, SignInFormProps>
 > = (props) => {
     const onSubmit = (formValues: any, dispatch: any) => {
         //onSubmit's default param is any
         //event.preventDefault() is automatically called with handleSubmit, a redux-form property
-        //form values are the values from the fields that redux-form automatiacally passes [which is done in streamForm]
+        //form values are the values from the fields that redux-form automatiacally passes
         //after clicking the submit button
-        dispatch(reset("authForm"));
         props.onSubmit(formValues);
     };
 
@@ -78,7 +77,7 @@ const AuthForm: React.FC<
                     <Field name="password" component={renderInput} />
                 </div>
 
-                <button className="authButton">Register</button>
+                <button className="authButton">Sign in</button>
                 <h3 className="registerAccountText">
                     Don't have an account? Register one here!
                 </h3>
@@ -87,9 +86,11 @@ const AuthForm: React.FC<
     );
 };
 
-const validate = (formValues: AuthFormValues): FormErrors<AuthFormValues> => {
+const validate = (
+    formValues: SignInFormValues
+): FormErrors<SignInFormValues> => {
     //MUST BE NAMED VALIDATE! Other names would be ignored by reduxForm(..)
-    const errors: FormErrors<AuthFormValues> = {};
+    const errors: FormErrors<SignInFormValues> = {};
     //If you return an empty object, redux form will assume everything is ok
     if (!formValues.email) {
         //user did not enter title, so undefined
@@ -112,8 +113,8 @@ const mapStateToProps = (state: StoreState) => {
 };
 
 export default connect(mapStateToProps)(
-    reduxForm<{}, AuthFormProps>({
-        form: "authForm",
+    reduxForm<{}, SignInFormProps>({
+        form: "signInForm",
         validate,
-    })(AuthForm)
+    })(SignInForm)
 );

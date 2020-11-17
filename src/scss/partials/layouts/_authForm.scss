@@ -65,6 +65,10 @@
 }
 .registerAccountText {
     color: red;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
     @media screen and (min-width: $md_breakpoint) {
         font-size: 1.7rem;
     }
