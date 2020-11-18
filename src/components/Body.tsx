@@ -7,10 +7,14 @@ import SignInForm from "./SignInForm";
 import { connect } from "react-redux";
 import { signUp, signIn } from "../actions";
 import RegisterForm from "./RegisterForm";
+import { StoreState } from "../reducers";
+import history from "../browserHistory";
+import { DisplayFormStateResponse } from "../reducers/displayReducer";
 
 export interface SignInFormProps {
     onSubmit(formValues: any): any;
     authStatus?: string | null;
+    displayRegisterForm(displayForm: boolean): void;
 }
 export interface RegisterFormProps {
     //We might have different props in the future, so we are having 2 different interfaces for Sign In And Register
@@ -21,29 +25,33 @@ export interface RegisterFormProps {
 export interface BodyProps {
     //signUp(formValues: any): void;
     signIn(formValues: any): void;
+    signUp(formValues: any): void;
+    authStatus?: string | null;
+    formStatus: DisplayFormStateResponse;
 }
 
 const Body: React.FC<BodyProps> = (props) => {
-    const onSubmit = async (formValues: any) => {
-        //Won't be triggered if failed to meet requirements of the form
-        //Callback for ReviewForm
-        //event.preventDefault()
-        //Redux automaticlaly calls it with handleSubmit
-        //form values are the values from the fields that redux-form automatiacally passes [Which is done in Streamform]
-        //after clicking the submit button
-
-        // props.signUp(formValues);
-        props.signIn(formValues);
-    };
-
-    const { width } = useWindowDimensions();
-
-    return (
-        <div className="bodyContainer">
-            <div className="contentContainer">
-                <div className="listenContainer">
-                    <SignInForm onSubmit={onSubmit} />
-                    {/* <h1 className="listenTitle">
+    const renderContent = () => {
+        if (props.authStatus) {
+            //If user is already logged in
+            return (
+                <h1
+                    onClick={() => {
+                        history.push("/walkman");
+                    }}
+                >
+                    You are logged in, click here to listen to Peter Quill's
+                    Walkman
+                </h1>
+            );
+        } else if (props.formStatus.displaySignInForm) {
+            return <SignInForm onSubmit={onSubmitSignIn} />;
+        } else if (props.formStatus.displayRegisterForm) {
+            return <RegisterForm onSubmit={onSubmitRegister} />;
+        } else {
+            return (
+                <React.Fragment>
+                    <h1 className="listenTitle">
                         Log In To Listen to Peter Quill's Walkman
                     </h1>
                     <div className="listenAboutWrap">
@@ -60,8 +68,31 @@ const Body: React.FC<BodyProps> = (props) => {
                                 alt="walkman"
                             ></img>
                         </div>
-                    </div> */}
-                </div>
+                    </div>
+                </React.Fragment>
+            );
+        }
+    };
+    const onSubmitSignIn = async (formValues: any) => {
+        //Won't be triggered if failed to meet requirements of the form
+        //Callback for ReviewForm
+        //event.preventDefault()
+        //Redux automaticlaly calls it with handleSubmit
+        //form values are the values from the fields that redux-form automatiacally passes [Which is done in Streamform]
+        //after clicking the submit button
+        props.signIn(formValues);
+    };
+
+    const onSubmitRegister = async (formValues: any) => {
+        props.signUp(formValues);
+    };
+
+    const { width } = useWindowDimensions();
+
+    return (
+        <div className="bodyContainer">
+            <div className="contentContainer">
+                <div className="listenContainer">{renderContent()}</div>
             </div>
 
             <div className="bodyBackgroundImgWrap">
@@ -76,5 +107,11 @@ const Body: React.FC<BodyProps> = (props) => {
         </div>
     );
 };
+const mapStateToProps = (state: StoreState) => {
+    return {
+        authStatus: state.authStatus.authenticated,
+        formStatus: state.formStatus,
+    };
+};
 
-export default connect(null, { signUp, signIn })(Body);
+export default connect(mapStateToProps, { signUp, signIn })(Body);

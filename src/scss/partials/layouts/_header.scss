@@ -13,7 +13,7 @@ nav {
     align-items: center;
 }
 
-.navSignOut {
+.navAuthStatus {
     cursor: pointer;
     position: absolute;
     right: 1rem;
@@ -29,8 +29,11 @@ nav {
         font-size: 1.4rem;
         right: 7rem;
     }
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
-.navSignOutHide {
+.navAuthStatusHide {
     display: none;
 }

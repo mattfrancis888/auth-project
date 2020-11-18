@@ -2,11 +2,12 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { StoreState } from "../reducers";
-import { signOut } from "../actions";
+import { signOut, displaySignInForm } from "../actions";
 
 interface IHeader {
     authStatus?: string | null;
     signOut(): void;
+    displaySignInForm(showForm: boolean): void;
 }
 const Header: React.FC<IHeader> = (props) => {
     const history = useHistory();
@@ -33,13 +34,23 @@ const Header: React.FC<IHeader> = (props) => {
 
                 <h1
                     className={
-                        props.authStatus ? "navSignOut" : "navSignOutHide"
+                        props.authStatus ? "navAuthStatus" : "navAuthStatusHide"
                     }
                     onClick={() => {
                         props.signOut();
                     }}
                 >
                     Sign Out
+                </h1>
+                <h1
+                    className={
+                        props.authStatus ? "navAuthStatusHIde" : "navAuthStatus"
+                    }
+                    onClick={() => {
+                        props.displaySignInForm(true);
+                    }}
+                >
+                    Log In
                 </h1>
             </div>
         </nav>
@@ -52,4 +63,4 @@ const mapStateToProps = (state: StoreState) => {
     };
 };
 
-export default connect(mapStateToProps, { signOut })(Header);
+export default connect(mapStateToProps, { signOut, displaySignInForm })(Header);

@@ -376,7 +376,7 @@ nav {
   align-items: center;
 }
 
-.navSignOut {
+.navAuthStatus {
   cursor: pointer;
   position: absolute;
   right: 1rem;
@@ -386,19 +386,22 @@ nav {
   letter-spacing: 0.2rem;
 }
 @media screen and (min-width: 520px) {
-  .navSignOut {
+  .navAuthStatus {
     font-size: 1.2rem;
     right: 3rem;
   }
 }
 @media screen and (min-width: 768px) {
-  .navSignOut {
+  .navAuthStatus {
     font-size: 1.4rem;
     right: 7rem;
   }
 }
+.navAuthStatus:hover {
+  text-decoration: underline;
+}
 
-.navSignOutHide {
+.navAuthStatusHide {
   display: none;
 }
 

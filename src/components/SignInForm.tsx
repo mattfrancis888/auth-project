@@ -10,6 +10,7 @@ import {
 import { StoreState } from "../reducers";
 import { connect } from "react-redux";
 import { SignInFormProps } from "./Body";
+import { displayRegisterForm } from "../actions";
 //Re-usable component
 export interface SignInFormValues {
     email: string;
@@ -78,7 +79,12 @@ const SignInForm: React.FC<
                 </div>
 
                 <button className="authButton">Sign in</button>
-                <h3 className="registerAccountText">
+                <h3
+                    className="registerAccountText"
+                    onClick={() => {
+                        props.displayRegisterForm(true);
+                    }}
+                >
                     Don't have an account? Register one here!
                 </h3>
             </form>
@@ -112,7 +118,7 @@ const mapStateToProps = (state: StoreState) => {
     };
 };
 
-export default connect(mapStateToProps)(
+export default connect(mapStateToProps, { displayRegisterForm })(
     reduxForm<{}, SignInFormProps>({
         form: "signInForm",
         validate,
