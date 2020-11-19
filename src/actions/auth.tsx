@@ -44,6 +44,10 @@ export const signIn = (formValues: any) => async (dispatch: Dispatch) => {
         localStorage.setItem("token", response.data.token);
         history.push("/walkman");
     } catch (err) {
+        // if (err.message === "Network Error") {
+        //     console.log("check error", err);
+        // }
+
         dispatch<AuthErrorAction>({
             type: ActionTypes.AUTH_ERROR,
             payload: "- Invalid login credentials",

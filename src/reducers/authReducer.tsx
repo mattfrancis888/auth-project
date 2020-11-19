@@ -16,7 +16,11 @@ const authReducer = (
 ) => {
     switch (action.type) {
         case ActionTypes.AUTH_USER:
-            return { ...state, authenticated: action.payload.token };
+            return {
+                ...state,
+                authenticated: action.payload.token,
+                errorMessage: "",
+            };
         case ActionTypes.AUTH_ERROR:
             return { ...state, errorMessage: action.payload };
         default:

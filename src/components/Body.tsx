@@ -10,7 +10,8 @@ import RegisterForm from "./RegisterForm";
 import { StoreState } from "../reducers";
 import history from "../browserHistory";
 import { DisplayFormStateResponse } from "../reducers/displayReducer";
-
+import anime from "animejs/lib/anime.es.js";
+import walkman from "../img/walkman.gif";
 export interface SignInFormProps {
     onSubmit(formValues: any): any;
     authStatus?: string | null;
@@ -35,14 +36,17 @@ const Body: React.FC<BodyProps> = (props) => {
         if (props.authStatus) {
             //If user is already logged in
             return (
-                <h1
-                    onClick={() => {
-                        history.push("/walkman");
-                    }}
-                >
-                    You are logged in, click here to listen to Peter Quill's
-                    Walkman
-                </h1>
+                <React.Fragment>
+                    <h1
+                        className="alreadyLoggedInTitle"
+                        onClick={() => {
+                            history.push("/walkman");
+                        }}
+                    >
+                        You are already logged in, click here to listen to Peter
+                        Quill's Walkman
+                    </h1>
+                </React.Fragment>
             );
         } else if (props.formStatus.displaySignInForm) {
             return <SignInForm onSubmit={onSubmitSignIn} />;
@@ -62,12 +66,25 @@ const Body: React.FC<BodyProps> = (props) => {
                             his Walkman, as it was the only thing Peter had left
                             of his mom. It also came with a headset.
                         </p>
-                        <div className="walkmanContainer">
-                            <img
-                                src="https://media1.giphy.com/media/YJGcmZMP7ljIA/giphy.gif"
-                                alt="walkman"
-                            ></img>
-                        </div>
+
+                        <img
+                            className="walkman"
+                            src={walkman}
+                            alt="walkman"
+                            onLoad={() => {
+                                anime({
+                                    targets: ".walkman",
+
+                                    opacity: [
+                                        {
+                                            value: [0, 1],
+                                            duration: 1000,
+                                            easing: "easeOutQuad",
+                                        },
+                                    ],
+                                });
+                            }}
+                        ></img>
                     </div>
                 </React.Fragment>
             );
@@ -92,7 +109,7 @@ const Body: React.FC<BodyProps> = (props) => {
     return (
         <div className="bodyContainer">
             <div className="contentContainer">
-                <div className="listenContainer">{renderContent()}</div>
+                <div className="contentWrap">{renderContent()}</div>
             </div>
 
             <div className="bodyBackgroundImgWrap">

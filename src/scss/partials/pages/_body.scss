@@ -28,7 +28,7 @@
     z-index: -999;
 }
 
-.listenContainer {
+.contentWrap {
     background-color: rgba(0, 0, 0, 0.8);
     width: 60vw;
     color: white;
@@ -87,7 +87,8 @@
     }
 }
 
-.walkmanContainer {
+.walkman {
+    opacity: 0;
     max-height: 20rem;
     @media screen and (min-width: $sm_breakpoint) {
         max-height: 25rem;
@@ -110,4 +111,14 @@
         height: 100%;
         object-fit: cover;
     }
+}
+
+.alreadyLoggedInTitle {
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+.alreadyLoggedInImage {
+    object-fit: cover;
 }

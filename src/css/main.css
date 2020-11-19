@@ -376,6 +376,10 @@ nav {
   align-items: center;
 }
 
+.marvelLogo {
+  cursor: pointer;
+}
+
 .navAuthStatus {
   cursor: pointer;
   position: absolute;
@@ -440,7 +444,7 @@ nav {
   object-fit: cover;
 }
 
-.listenContainer {
+.contentWrap {
   background-color: rgba(0, 0, 0, 0.8);
   width: 60vw;
   color: white;
@@ -450,12 +454,12 @@ nav {
   margin-top: 15rem;
 }
 @media screen and (min-width: 768px) {
-  .listenContainer {
+  .contentWrap {
     width: 70vw;
   }
 }
 @media screen and (min-width: 1200px) {
-  .listenContainer {
+  .contentWrap {
     width: 50vw;
     padding: 3rem;
   }
@@ -515,33 +519,43 @@ nav {
   }
 }
 
-.walkmanContainer {
+.walkman {
+  opacity: 0;
   max-height: 20rem;
 }
 @media screen and (min-width: 520px) {
-  .walkmanContainer {
+  .walkman {
     max-height: 25rem;
   }
 }
 @media screen and (min-width: 768px) {
-  .walkmanContainer {
+  .walkman {
     width: 50%;
     max-height: 30rem;
   }
 }
 @media screen and (min-width: 992px) {
-  .walkmanContainer {
+  .walkman {
     max-height: 35rem;
   }
 }
 @media screen and (min-width: 1200px) {
-  .walkmanContainer {
+  .walkman {
     max-height: 45rem;
   }
 }
-.walkmanContainer img {
+.walkman img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.alreadyLoggedInTitle:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.alreadyLoggedInImage {
   object-fit: cover;
 }
 

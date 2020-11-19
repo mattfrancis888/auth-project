@@ -15,6 +15,7 @@ const Header: React.FC<IHeader> = (props) => {
         <nav>
             <div className="navWrap">
                 <svg
+                    className="marvelLogo"
                     width="130"
                     height="52"
                     xmlns="http://www.w3.org/2000/svg"
