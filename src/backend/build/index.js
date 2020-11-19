@@ -21,6 +21,7 @@ if (process.env.mongoURI) {
 var app = express_1.default();
 // middleware for parsing bodies from URL
 app.use(body_parser_1.default.urlencoded({ extended: true }));
+app.use(body_parser_1.default.json());
 app.use(cors_1.default());
 routes_1.default(app);
 var port = 5000;

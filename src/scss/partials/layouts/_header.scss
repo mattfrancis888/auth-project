@@ -1,12 +1,23 @@
-header {
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    z-index: 2;
+}
+.navWrap {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+}
+.marvelLogo {
+    cursor: pointer;
 }
 
-.headerLogIn {
+.navAuthStatus {
+    cursor: pointer;
     position: absolute;
     right: 1rem;
     font-size: 1rem;
@@ -21,4 +32,11 @@ header {
         font-size: 1.4rem;
         right: 7rem;
     }
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.navAuthStatusHide {
+    display: none;
 }
