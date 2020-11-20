@@ -1,4 +1,74 @@
-.walkmanTitle {
-    margin-top: 10rem;
-    color: white;
+.musicWrap {
+    margin-top: 8rem;
+    font-family: "Roboto Condensed";
+}
+
+.musicTitle {
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 8rem 0 3rem 0;
+    font-size: 1.9rem;
+    @media screen and (min-width: $sm_breakpoint) {
+        font-size: 2.5rem;
+        margin: 10rem 0 5rem 0;
+    }
+    @media screen and (min-width: $md_breakpoint) {
+        font-size: 2.8rem;
+    }
+    @media screen and (min-width: $xl_breakpoint) {
+        margin-top: 12rem;
+    }
+}
+.spotifyAndApplePlaylistWrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    @media screen and (min-width: $lg_breakpoint) {
+        padding: 2rem 8rem;
+    }
+}
+
+.playlist {
+    width: 100%;
+    height: 45rem;
+    margin-bottom: 2rem;
+    @media screen and (min-width: $md_breakpoint) {
+        width: 48%;
+    }
+}
+
+.youtubeSoundtrackContainer {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 2rem;
+    margin-bottom: 5rem;
+    @media screen and (min-width: $sm_breakpoint) {
+        padding: 3rem;
+    }
+
+    @media screen and (min-width: $md_breakpoint) {
+        padding: 4rem 7rem;
+    }
+    @media screen and (min-width: $lg_breakpoint) {
+        padding: 6rem 10rem;
+    }
+    @media screen and (min-width: $xl_breakpoint) {
+        padding: 15rem 25rem;
+    }
+}
+.youtubeSoundtrack {
+    width: 100%;
+    height: 30rem;
+
+    @media screen and (min-width: $md_breakpoint) {
+        height: 43rem;
+    }
+    @media screen and (min-width: $lg_breakpoint) {
+        height: 48rem;
+    }
+    @media screen and (min-width: $xl_breakpoint) {
+        height: 55rem;
+    }
 }
