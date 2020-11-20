@@ -2,7 +2,8 @@ import React from "react";
 import requireAuth from "./requireAuth";
 const WalkmanInfo: React.FC<{}> = () => {
     return (
-        <div>
+        <div className="musicWrap">
+            <h1 className="musicTitle">Music In Peter Quil's Walkman</h1>
             <div className="spotifyAndApplePlaylistWrap">
                 <iframe
                     className="playlist"

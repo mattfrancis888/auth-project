@@ -342,7 +342,7 @@ template,
  */
 body {
   margin: 0;
-  background-color: black;
+  background-color: white;
 }
 
 a {
@@ -697,13 +697,39 @@ nav {
   }
 }
 
+.musicWrap {
+  margin-top: 8rem;
+  font-family: "Roboto Condensed";
+}
+
+.musicTitle {
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 8rem 0 3rem 0;
+  font-size: 1.9rem;
+}
+@media screen and (min-width: 520px) {
+  .musicTitle {
+    font-size: 2.5rem;
+    margin: 10rem 0 5rem 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .musicTitle {
+    font-size: 2.8rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .musicTitle {
+    margin-top: 12rem;
+  }
+}
+
 .spotifyAndApplePlaylistWrap {
-  margin-top: 15rem;
   display: flex;
   flex-wrap: wrap;
-  background-color: white;
   justify-content: space-around;
-  padding: 2rem;
 }
 @media screen and (min-width: 992px) {
   .spotifyAndApplePlaylistWrap {
@@ -724,17 +750,49 @@ nav {
 
 .youtubeSoundtrackContainer {
   display: flex;
-  padding: 0 3rem;
+  justify-content: center;
+  padding: 0.5rem 2rem;
+  margin-bottom: 5rem;
+}
+@media screen and (min-width: 520px) {
+  .youtubeSoundtrackContainer {
+    padding: 3rem;
+  }
 }
 @media screen and (min-width: 768px) {
   .youtubeSoundtrackContainer {
-    padding: 0 5rem;
+    padding: 4rem 7rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .youtubeSoundtrackContainer {
+    padding: 6rem 10rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .youtubeSoundtrackContainer {
+    padding: 15rem 25rem;
   }
 }
 
 .youtubeSoundtrack {
   width: 100%;
-  height: 65%;
+  height: 30rem;
+}
+@media screen and (min-width: 768px) {
+  .youtubeSoundtrack {
+    height: 43rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .youtubeSoundtrack {
+    height: 48rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .youtubeSoundtrack {
+    height: 55rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
