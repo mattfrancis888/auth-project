@@ -1,8 +1,8 @@
-import React, { ComponentType } from "react";
+import React, { ComponentType, useEffect } from "react";
 import {
     Field,
     reduxForm,
-    reset,
+    change,
     FormErrors,
     InjectedFormProps,
 } from "redux-form";
@@ -10,7 +10,11 @@ import {
 import { StoreState } from "../reducers";
 import { connect } from "react-redux";
 import { SignInFormProps } from "./Body";
-import { displayRegisterForm, displayAuthLoading } from "../actions";
+import {
+    displayRegisterForm,
+    displayAuthLoading,
+    resetAuthFormError,
+} from "../actions";
 //Re-usable component
 export interface SignInFormValues {
     email: string;
@@ -48,18 +52,29 @@ const renderInput = ({ input, label, meta, placeHolder }: any) => {
 const SignInForm: React.FC<
     SignInFormProps & InjectedFormProps<{}, SignInFormProps>
 > = (props) => {
+    useEffect(() => {
+        //If we don't reset the auth error message, if we switch to RegisterForm, the error message would stick around
+        props.resetAuthFormError();
+    }, []);
+
     const hideAuthLoading = () => {
         if (props.authStatus) {
             //finished loading
             props.displayAuthLoading(false);
         }
     };
-    const onSubmit = (formValues: any, dispatch: any) => {
+    const onSubmit = async (formValues: any, dispatch: any) => {
         //onSubmit's default param is any
         //event.preventDefault() is automatically called with handleSubmit, a redux-form property
         //form values are the values from the fields that redux-form automatiacally passes
         //after clicking the submit button
-        props.onSubmit(formValues);
+        await props.onSubmit(formValues);
+        //resets password if entered incorrectly
+        if (!props.authStatus) {
+            //if no error code is given, no need to reset password or else user will see the field gets cleared before
+            //directed to /walkman
+            dispatch(change("signInForm", "password", ""));
+        }
     };
 
     return (
@@ -128,6 +143,7 @@ const mapStateToProps = (state: StoreState) => {
 export default connect(mapStateToProps, {
     displayRegisterForm,
     displayAuthLoading,
+    resetAuthFormError,
 })(
     reduxForm<{}, SignInFormProps>({
         form: "signInForm",

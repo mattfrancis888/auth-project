@@ -18,12 +18,14 @@ export interface SignInFormProps {
     authStatus?: string | null;
     displayRegisterForm(displayForm: boolean): void;
     displayAuthLoading(displayLoading: boolean): void;
+    resetAuthFormError(): void;
 }
 export interface RegisterFormProps {
     //We might have different props in the future, so we are having 2 different interfaces for Sign In And Register
     onSubmit(formValues: any): any;
     authStatus?: string | null;
     displayAuthLoading(displayLoading: boolean): void;
+    resetAuthFormError(): void;
 }
 
 export interface BodyProps {

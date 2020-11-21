@@ -14,6 +14,10 @@ export interface AuthErrorAction {
     type: ActionTypes.AUTH_ERROR;
     payload: string;
 }
+export interface ResetAuthErrorAction {
+    type: ActionTypes.RESET_AUTH_ERROR;
+    payload: string;
+}
 
 export const signUp = (formValues: any) => async (dispatch: Dispatch) => {
     try {
@@ -60,6 +64,14 @@ export const signOut = () => {
 
     return {
         type: ActionTypes.AUTH_USER,
+        payload: "",
+    };
+};
+
+export const resetAuthFormError = () => {
+    //resets error for redux forms
+    return {
+        type: ActionTypes.RESET_AUTH_ERROR,
         payload: "",
     };
 };

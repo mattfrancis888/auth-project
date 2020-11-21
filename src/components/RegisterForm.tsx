@@ -1,8 +1,9 @@
-import React, { ComponentType } from "react";
+import React, { ComponentType, useEffect } from "react";
 import {
     Field,
     reduxForm,
     reset,
+    change,
     FormErrors,
     InjectedFormProps,
 } from "redux-form";
@@ -10,7 +11,7 @@ import {
 import { StoreState } from "../reducers";
 import { connect } from "react-redux";
 import { RegisterFormProps } from "./Body";
-import { displayAuthLoading } from "../actions";
+import { displayAuthLoading, resetAuthFormError } from "../actions";
 //Re-usable component
 export interface RegisterFormValues {
     email: string;
@@ -48,6 +49,10 @@ const renderInput = ({ input, label, meta, placeHolder }: any) => {
 const RegisterForm: React.FC<
     RegisterFormProps & InjectedFormProps<{}, RegisterFormProps>
 > = (props) => {
+    useEffect(() => {
+        //If we don't reset the auth error message, if we switch to SignInForm, the error message would stick around
+        props.resetAuthFormError();
+    }, []);
     const hideAuthLoading = () => {
         if (props.authStatus) {
             //finished loading
@@ -60,8 +65,9 @@ const RegisterForm: React.FC<
         //event.preventDefault() is automatically called with handleSubmit, a redux-form property
         //form values are the values from the fields that redux-form automatiacally passes
         //after clicking the submit button
-        dispatch(reset("registerForm"));
+        //dispatch(reset("registerForm"));
         props.onSubmit(formValues);
+        dispatch(change("registerForm", "password", ""));
     };
 
     return (
@@ -119,7 +125,10 @@ const mapStateToProps = (state: StoreState) => {
     };
 };
 
-export default connect(mapStateToProps, { displayAuthLoading })(
+export default connect(mapStateToProps, {
+    displayAuthLoading,
+    resetAuthFormError,
+})(
     reduxForm<{}, RegisterFormProps>({
         form: "registerForm",
         validate,
