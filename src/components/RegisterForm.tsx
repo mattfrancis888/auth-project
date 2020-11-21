@@ -10,6 +10,7 @@ import {
 import { StoreState } from "../reducers";
 import { connect } from "react-redux";
 import { RegisterFormProps } from "./Body";
+import { displayAuthLoading } from "../actions";
 //Re-usable component
 export interface RegisterFormValues {
     email: string;
@@ -47,6 +48,13 @@ const renderInput = ({ input, label, meta, placeHolder }: any) => {
 const RegisterForm: React.FC<
     RegisterFormProps & InjectedFormProps<{}, RegisterFormProps>
 > = (props) => {
+    const hideAuthLoading = () => {
+        if (props.authStatus) {
+            //finished loading
+            props.displayAuthLoading(false);
+        }
+    };
+
     const onSubmit = (formValues: any, dispatch: any) => {
         //onSubmit's default param is any
         //event.preventDefault() is automatically called with handleSubmit, a redux-form property
@@ -58,6 +66,7 @@ const RegisterForm: React.FC<
 
     return (
         <React.Fragment>
+            {hideAuthLoading()}
             <form className="authForm" onSubmit={props.handleSubmit(onSubmit)}>
                 <div className="authFieldSection">
                     <div className="authFormFieldTitleWrap">
@@ -110,7 +119,7 @@ const mapStateToProps = (state: StoreState) => {
     };
 };
 
-export default connect(mapStateToProps)(
+export default connect(mapStateToProps, { displayAuthLoading })(
     reduxForm<{}, RegisterFormProps>({
         form: "registerForm",
         validate,

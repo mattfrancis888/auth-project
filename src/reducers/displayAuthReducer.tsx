@@ -10,7 +10,7 @@ export const FORM_STATE: DisplayFormStateResponse = {
     displayRegisterForm: false,
 };
 
-const displayReducer = (
+const displayAuthReducer = (
     state: DisplayFormStateResponse = FORM_STATE,
     action: FormActions
 ) => {
@@ -32,4 +32,4 @@ const displayReducer = (
     }
 };
 
-export default displayReducer;
+export default displayAuthReducer;

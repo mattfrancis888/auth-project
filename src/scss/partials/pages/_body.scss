@@ -36,6 +36,7 @@
     padding: 2rem;
     font-family: "Roboto Condensed";
     margin-top: 15rem;
+    justify-content: center;
     @media screen and (min-width: $md_breakpoint) {
         width: 70vw;
     }
@@ -65,6 +66,7 @@
     display: flex;
     flex-wrap: wrap;
     font-size: 1.2rem;
+    justify-content: center;
 
     p {
         width: 100%;

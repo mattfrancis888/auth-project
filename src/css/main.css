@@ -452,6 +452,7 @@ nav {
   padding: 2rem;
   font-family: "Roboto Condensed";
   margin-top: 15rem;
+  justify-content: center;
 }
 @media screen and (min-width: 768px) {
   .contentWrap {
@@ -492,6 +493,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   font-size: 1.2rem;
+  justify-content: center;
 }
 .listenAboutWrap p {
   width: 100%;
@@ -559,6 +561,44 @@ nav {
   object-fit: cover;
 }
 
+.loadingCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.loadingCenter > div {
+  width: 10rem;
+  height: 10rem;
+}
+@media screen and (min-width: 520px) {
+  .loadingCenter > div {
+    width: 12rem;
+    height: 12rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .loadingCenter > div {
+    width: 16rem;
+    height: 16rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.loadingTransparentBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: black;
+}
+
+.loadingHide {
+  display: none;
+}
+
 .authForm {
   text-align: left;
 }
@@ -611,6 +651,7 @@ nav {
 }
 
 .authButton {
+  cursor: pointer;
   padding: 0.2rem;
   margin: 1rem 0;
   width: 100%;

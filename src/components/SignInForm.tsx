@@ -10,7 +10,7 @@ import {
 import { StoreState } from "../reducers";
 import { connect } from "react-redux";
 import { SignInFormProps } from "./Body";
-import { displayRegisterForm } from "../actions";
+import { displayRegisterForm, displayAuthLoading } from "../actions";
 //Re-usable component
 export interface SignInFormValues {
     email: string;
@@ -48,6 +48,12 @@ const renderInput = ({ input, label, meta, placeHolder }: any) => {
 const SignInForm: React.FC<
     SignInFormProps & InjectedFormProps<{}, SignInFormProps>
 > = (props) => {
+    const hideAuthLoading = () => {
+        if (props.authStatus) {
+            //finished loading
+            props.displayAuthLoading(false);
+        }
+    };
     const onSubmit = (formValues: any, dispatch: any) => {
         //onSubmit's default param is any
         //event.preventDefault() is automatically called with handleSubmit, a redux-form property
@@ -58,6 +64,7 @@ const SignInForm: React.FC<
 
     return (
         <React.Fragment>
+            {hideAuthLoading()}
             <form className="authForm" onSubmit={props.handleSubmit(onSubmit)}>
                 <div className="authFieldSection">
                     <div className="authFormFieldTitleWrap">
@@ -118,7 +125,10 @@ const mapStateToProps = (state: StoreState) => {
     };
 };
 
-export default connect(mapStateToProps, { displayRegisterForm })(
+export default connect(mapStateToProps, {
+    displayRegisterForm,
+    displayAuthLoading,
+})(
     reduxForm<{}, SignInFormProps>({
         form: "signInForm",
         validate,
