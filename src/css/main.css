@@ -770,7 +770,12 @@ nav {
 .spotifyAndApplePlaylistWrap {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .spotifyAndApplePlaylistWrap {
+    justify-content: space-around;
+  }
 }
 @media screen and (min-width: 992px) {
   .spotifyAndApplePlaylistWrap {

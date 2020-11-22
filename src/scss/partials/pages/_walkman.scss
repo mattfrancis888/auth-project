@@ -23,8 +23,10 @@
 .spotifyAndApplePlaylistWrap {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-
+    justify-content: center;
+    @media screen and (min-width: $md_breakpoint) {
+        justify-content: space-around;
+    }
     @media screen and (min-width: $lg_breakpoint) {
         padding: 2rem 8rem;
     }
