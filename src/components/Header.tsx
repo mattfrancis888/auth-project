@@ -54,6 +54,7 @@ const Header: React.FC<IHeader> = (props) => {
                     onClick={() => {
                         props.displaySignInForm(true);
                     }}
+                    data-testid="logInTitle"
                 >
                     Log In
                 </h1>

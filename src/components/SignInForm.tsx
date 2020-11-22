@@ -123,8 +123,11 @@ const SignInForm: React.FC<
                     />
                 </div>
 
-                <button className="authButton">Sign in</button>
+                <button className="authButton" data-testid="signInButton">
+                    Sign in
+                </button>
                 <h3
+                    data-testid="registerAccountText"
                     className="registerAccountText"
                     onClick={() => {
                         props.displayRegisterForm(true);

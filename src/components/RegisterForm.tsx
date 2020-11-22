@@ -116,7 +116,9 @@ const RegisterForm: React.FC<
                     />
                 </div>
 
-                <button className="authButton">Register</button>
+                <button data-testid="registerButton" className="authButton">
+                    Register
+                </button>
             </form>
         </React.Fragment>
     );
