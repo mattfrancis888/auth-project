@@ -32,7 +32,7 @@ const renderError = ({ error, touched }: any) => {
     }
 };
 
-const renderInput = ({ input, label, meta, placeHolder }: any) => {
+const renderTextInput = ({ input, label, meta, placeHolder }: any) => {
     //"component" property automatically passes props to argument, it has {input properties and meta properties}
     //"label" automatically passes props to arguments
     return (
@@ -44,6 +44,21 @@ const renderInput = ({ input, label, meta, placeHolder }: any) => {
     );
     //{..input} is shortcut for redux-form; where you take all the input from "component's" props and pass it as
     //props to <input>
+};
+
+const renderPasswordInput = ({ input, label, meta, placeHolder }: any) => {
+    return (
+        <div>
+            <label>{label}</label>
+            <input
+                className="createAuthInputs"
+                type="password"
+                {...input}
+                autoComplete="off"
+            />
+            {renderError(meta)}
+        </div>
+    );
 };
 
 const RegisterForm: React.FC<
@@ -81,7 +96,11 @@ const RegisterForm: React.FC<
                             {props.authStatus}
                         </h3>
                     </div>
-                    <Field name="email" type="text" component={renderInput} />
+                    <Field
+                        name="email"
+                        type="text"
+                        component={renderTextInput}
+                    />
                 </div>
                 <div className="authFieldSection">
                     <div className="authFormFieldTitleWrap">
@@ -90,7 +109,11 @@ const RegisterForm: React.FC<
                             {props.authStatus}
                         </h3>
                     </div>
-                    <Field name="password" component={renderInput} />
+                    <Field
+                        name="password"
+                        type="password"
+                        component={renderPasswordInput}
+                    />
                 </div>
 
                 <button className="authButton">Register</button>
