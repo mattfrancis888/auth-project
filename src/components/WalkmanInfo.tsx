@@ -20,6 +20,7 @@ const WalkmanInfo: React.FC<{}> = () => {
                     onLoad={() => {
                         setIsSpotifyloaded(true);
                     }}
+                    data-testid="spotifyPlaylist"
                 ></iframe>
 
                 <iframe

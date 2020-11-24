@@ -10,7 +10,7 @@ var tokenForUser = function (user) {
     //Generate a token by using user id and 'secret key'
     if (process.env.privateKey) {
         //iat- issued at  property is implemented by default
-        return jsonwebtoken_1.default.sign({ subject: user.id }, process.env.privateKey);
+        return jsonwebtoken_1.default.sign({ subject: user._id }, process.env.privateKey);
     }
 };
 exports.signIn = function (req, res) {

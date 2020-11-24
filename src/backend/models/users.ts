@@ -2,17 +2,21 @@ import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
 
 export interface IUser extends mongoose.Document {
+    _id: string;
     email: { type: string; unique: true; lowercase: true };
     password: string;
     comparePassword: Function;
 }
-
+interface IUserSchema extends mongoose.Document {
+    email: string;
+    password: string;
+}
 const userScehma = new Schema({
     email: String,
     password: String,
 });
 
-userScehma.pre("save", function (this: IUser, next) {
+userScehma.pre("save", function (this: IUserSchema, next) {
     //https://stackoverflow.com/questions/46182826/mongoose-hooks-not-working-with-typescript
     //Arrow functions cannot have 'this' as param
     const user = this;

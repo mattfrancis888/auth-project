@@ -41,7 +41,12 @@ const renderTextInput = ({ input, label, meta, placeHolder }: any) => {
     return (
         <div>
             <label>{label}</label>
-            <input className="createAuthInputs" {...input} autoComplete="off" />
+            <input
+                data-testid="signInTextInput"
+                className="createAuthInputs"
+                {...input}
+                autoComplete="off"
+            />
             {renderError(meta)}
         </div>
     );
@@ -54,6 +59,7 @@ const renderPasswordInput = ({ input, label, meta, placeHolder }: any) => {
         <div>
             <label>{label}</label>
             <input
+                data-testid="signInPasswordInput"
                 className="createAuthInputs"
                 type="password"
                 {...input}
