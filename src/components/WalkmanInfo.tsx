@@ -24,6 +24,7 @@ const WalkmanInfo: React.FC<{}> = () => {
                 ></iframe>
 
                 <iframe
+                    data-testid="applePlaylist"
                     className="playlist"
                     allow="autoplay *; encrypted-media *;"
                     frameBorder="0"
@@ -37,6 +38,7 @@ const WalkmanInfo: React.FC<{}> = () => {
             </div>
             <div className="youtubeSoundtrackContainer">
                 <iframe
+                    data-testid="youtubePlaylist"
                     className="youtubeSoundtrack"
                     src="https://www.youtube.com/embed/Kt-tLuszKBA"
                     frameBorder="0"

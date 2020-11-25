@@ -15,12 +15,10 @@ import {
 import { act } from "react-dom/test-utils";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-
-let mock = new MockAdapter(axios);
+import history from "browserHistory";
 
 afterEach(() => {
     cleanup();
-    mock.restore();
 });
 let app: RenderResult;
 
@@ -70,8 +68,11 @@ test("Show 'Register' form when 'Don't have an account? Register one here' in 'S
 });
 
 describe("'Sign In' and 'Register' form  on submit button clicked", () => {
-    //mocking local storage
+    let pushSpy: jest.SpyInstance;
+
     beforeEach(() => {
+        //mocking local storage
+        //https://medium.com/javascript-in-plain-english/testing-local-storage-with-testing-library-580f74e8805b
         Object.defineProperty(window, "localStorage", {
             value: {
                 getItem: jest.fn(() => null),
@@ -79,6 +80,9 @@ describe("'Sign In' and 'Register' form  on submit button clicked", () => {
             },
             writable: true,
         });
+        //Mocking history:
+        //https://www.reddit.com/r/reactjs/comments/b1hsno/how_can_i_test_historypush_inside_action/
+        pushSpy = jest.spyOn(history, "push");
     });
 
     test("'Sign In' form on submit", async () => {
@@ -118,6 +122,8 @@ describe("'Sign In' and 'Register' form  on submit button clicked", () => {
             }
             expect(signInScope.isDone()).toBe(true);
             expect(window.localStorage.setItem).toHaveBeenCalledTimes(1);
+            expect(pushSpy).toBeCalledWith("/walkman");
+            pushSpy.mockRestore();
         });
     }, 30000);
 
@@ -165,6 +171,8 @@ describe("'Sign In' and 'Register' form  on submit button clicked", () => {
             }
             expect(registerScope.isDone()).toBe(true);
             expect(window.localStorage.setItem).toHaveBeenCalledTimes(1);
+            expect(pushSpy).toBeCalledWith("/walkman");
+            pushSpy.mockRestore();
         });
     }, 30000);
 });
