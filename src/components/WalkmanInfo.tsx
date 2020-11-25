@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import requireAuth from "./requireAuth";
 import PlaylistPlaceholder from "./PlaylistPlaceholder";
+
 const WalkmanInfo: React.FC<{}> = () => {
     const [isSpotifyLoaded, setIsSpotifyloaded] = useState(false);
     const [isAppleLoaded, setIsAppleloaded] = useState(false);

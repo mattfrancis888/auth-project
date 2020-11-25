@@ -47,7 +47,7 @@ describe("Sections that appear in walkman page(with path '/walkman' ) ", () => {
             </MemoryRouter>
         </Root>
     );
-    test("Shows Spotify Playlist ", () => {
+    test("Shows Playlists ", () => {
         expect(app.getByTestId("spotifyPlaylist")).toBeInTheDocument();
         expect(app.getByTestId("applePlaylist")).toBeInTheDocument();
         expect(app.getByTestId("youtubePlaylist")).toBeInTheDocument();
