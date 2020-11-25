@@ -140,7 +140,7 @@ const Body: React.FC<BodyProps> = (props) => {
     return (
         <React.Fragment>
             {hideAuthLoading()}
-            <div className="bodyContainer">
+            <div className="bodyContainer" data-testid="bodyContent">
                 <div className="contentContainer">
                     <div className="contentWrap">{renderContent()}</div>
                 </div>

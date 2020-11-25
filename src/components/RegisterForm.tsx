@@ -38,7 +38,12 @@ const renderTextInput = ({ input, label, meta, placeHolder }: any) => {
     return (
         <div>
             <label>{label}</label>
-            <input className="createAuthInputs" {...input} autoComplete="off" />
+            <input
+                data-testid="registerTextInput"
+                className="createAuthInputs"
+                {...input}
+                autoComplete="off"
+            />
             {renderError(meta)}
         </div>
     );
@@ -51,6 +56,7 @@ const renderPasswordInput = ({ input, label, meta, placeHolder }: any) => {
         <div>
             <label>{label}</label>
             <input
+                data-testid="registerPasswordInput"
                 className="createAuthInputs"
                 type="password"
                 {...input}
@@ -116,7 +122,9 @@ const RegisterForm: React.FC<
                     />
                 </div>
 
-                <button className="authButton">Register</button>
+                <button data-testid="registerButton" className="authButton">
+                    Register
+                </button>
             </form>
         </React.Fragment>
     );

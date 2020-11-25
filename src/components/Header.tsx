@@ -23,6 +23,7 @@ const Header: React.FC<IHeader> = (props) => {
                         history.push("/");
                         props.displaySignInForm(true);
                     }}
+                    data-testid="marvelLogo"
                 >
                     <rect fill="#EC1D24" width="100%" height="100%"></rect>
                     <path
@@ -53,6 +54,7 @@ const Header: React.FC<IHeader> = (props) => {
                     onClick={() => {
                         props.displaySignInForm(true);
                     }}
+                    data-testid="logInTitle"
                 >
                     Log In
                 </h1>
