@@ -15,7 +15,7 @@ if (process.env.mongoURI) {
         process.env.mongoURI,
         { useNewUrlParser: true, useUnifiedTopology: true },
         () => {
-            console.log("connected");
+            console.log("connected to mongodb database (mongodb atlas)");
         }
     );
 }
@@ -26,6 +26,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 route(app);
+app.get("/", (req, res) => {
+    res.send("hi");
+});
+
 const port = 5000;
 //app.use(errorHandler);
 app.listen(port, () => {

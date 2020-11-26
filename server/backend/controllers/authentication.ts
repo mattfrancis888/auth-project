@@ -43,7 +43,7 @@ export const signUp = (req: Request, res: Response, next: NextFunction) => {
                 password: password,
             });
 
-            user.save((err) => {
+            user.save((err:any) => {
                 if (err) return next(err);
                 //Generate a token when user signs in, this token will be used so that they can access protected routes
                 res.send({ token: tokenForUser(user) });

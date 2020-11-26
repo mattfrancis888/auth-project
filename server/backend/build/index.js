@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 if (process.env.mongoURI) {
     mongoose_1.default.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, function () {
-        console.log("connected");
+        console.log("connected to mongodb database (mongodb atlas)");
     });
 }
 var app = express_1.default();
@@ -24,6 +24,9 @@ app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use(body_parser_1.default.json());
 app.use(cors_1.default());
 routes_1.default(app);
+app.get("/", function (req, res) {
+    res.send("hi");
+});
 var port = 5000;
 //app.use(errorHandler);
 app.listen(port, function () {
