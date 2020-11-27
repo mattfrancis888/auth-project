@@ -12,7 +12,16 @@
 
             "dest": "build/index.js",
             "continue": true
+        },
+        {
+            "src": "/signin",
+            "methods": ["POST"],
+            "dest": "build/index.js"
+        },
+        {
+            "src": "/signup",
+            "methods": ["POST"],
+            "dest": "build/index.js"
         }
-        
     ]
 }
