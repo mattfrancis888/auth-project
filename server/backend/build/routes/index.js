@@ -25,7 +25,8 @@ var route = function (app) {
     // });
     //We want to ensure that the user provided the proper email and password to log in
     //To do so, we created the requireSignIn middleware
-    app.post("/signin", requireSignIn, authentication_1.signIn);
+    app.post("/signin", requireSignIn, authentication_1.signIn); 
     app.post("/signup", authentication_1.signUp);
+    //We use post because we are 'created' the token when we signin and signup
 };
 exports.default = route;
