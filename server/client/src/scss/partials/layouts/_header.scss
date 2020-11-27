@@ -1,0 +1,42 @@
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    z-index: 2;
+}
+.navWrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.marvelLogo {
+    cursor: pointer;
+}
+
+.navAuthStatus {
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    font-size: 1rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    @media screen and (min-width: $sm_breakpoint) {
+        font-size: 1.2rem;
+        right: 3rem;
+    }
+    @media screen and (min-width: $md_breakpoint) {
+        font-size: 1.4rem;
+        right: 7rem;
+    }
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.navAuthStatusHide {
+    display: none;
+}
