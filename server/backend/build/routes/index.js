@@ -6,11 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var authentication_1 = require("../controllers/authentication");
 var passport_1 = require("../services/passport");
 var passport_2 = __importDefault(require("passport"));
-passport_2.default.use(passport_1.jwtLogin);
+//passport.use(jwtLogin);
 //authenticates if a user can log in / acess a specific resource
 //We are not using cookie sessions, so we put in session: false
 //const requireAuth = passport.authenticate("jwt", { session: false });
 //requireAuth uses the jwtLogin strategy
+//We are not using jwtlogin passport strategy / requireAuth  here because we have no
+//api calls that needs the middleware, but its included here just in case for future use
 var requireSignIn = passport_2.default.authenticate("local", { session: false });
 passport_2.default.use(passport_1.localLogin);
 var route = function (app) {
@@ -25,8 +27,7 @@ var route = function (app) {
     // });
     //We want to ensure that the user provided the proper email and password to log in
     //To do so, we created the requireSignIn middleware
-    app.post("/signin", requireSignIn, authentication_1.signIn); 
+    app.post("/signin", requireSignIn, authentication_1.signIn);
     app.post("/signup", authentication_1.signUp);
-    //We use post because we are 'created' the token when we signin and signup
 };
 exports.default = route;

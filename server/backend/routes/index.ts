@@ -3,11 +3,17 @@ import { Express } from "express";
 import { jwtLogin, localLogin } from "../services/passport";
 import passport from "passport";
 
-passport.use(jwtLogin);
+//passport.use(jwtLogin);
+
 //authenticates if a user can log in / acess a specific resource
 //We are not using cookie sessions, so we put in session: false
 //const requireAuth = passport.authenticate("jwt", { session: false });
 //requireAuth uses the jwtLogin strategy
+
+//We are not using jwtlogin passport strategy / requireAuth  here because we have no
+//api calls that needs the middleware, but its included here just in case for future use
+
+
 
 const requireSignIn = passport.authenticate("local", { session: false });
 passport.use(localLogin);
