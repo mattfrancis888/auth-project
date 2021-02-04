@@ -55,23 +55,20 @@ Deployed front-end and back-end separately.
 -   https://stackoverflow.com/questions/44133536/is-it-safe-to-store-a-jwt-in-localstorage-with-reactjs
 -   https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
 -   https://stackoverflow.com/questions/44133536/is-it-safe-to-store-a-jwt-in-localstorage-with-reactjs
+-   Update (after building Kijiji website that uses cookies): Localstorage is more vulnerable to XSS; but it has more security against XSRF attacks because localstorage only exists for each tab.
 
 ## CSRF (or XSRF) And XSS Attacks:
 
 ## CSRF
 
--   Cross-Site Request Forgery (CSRF) steals cookies to trick the backend into thinking you are another user.
--   Happens in authenticated sessions when the server trusts the user/browser. The attacker tries to force/trick you into making a request which you did not intend. This could be sending you a link that makes you involuntarily change your password.
+-   Cross-Site Request Forgery (CSRF) steals cookies to trick the backend / your API from another domain. 
+-   Visual representation: https://www.youtube.com/watch?v=hW2ONyxAySY&t=600s&ab_channel=TroyHunt
 
 ### XSS
 
 -   XSS attacks enable attackers to inject client-side scripts into web pages viewed by other users. Note: SQL injection is not XSS, that's just another type of injection attack. XSS strictly speaking only affects client-side code.
 -   Doesn't need an authenticated session and can be exploited when the vulnerable website doesn't do the basics of validating or escaping input.
-
-## Examples of CSRF AND XSS:
-
-https://l4mp1.medium.com/difference-between-xss-and-csrf-attacks-ff29e5abcd33
-https://security.stackexchange.com/questions/138987/difference-between-xss-and-csrf
+- Visual representation: https://www.youtube.com/watch?v=M6N7gEZ-IUQ&ab_channel=BenAwad
 
 ## React:
 
